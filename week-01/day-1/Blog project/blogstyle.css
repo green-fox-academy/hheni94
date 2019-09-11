@@ -1,0 +1,38 @@
+#header {
+    background-color: turquoise;
+}
+
+body {
+    padding: 0% 20%;
+    background-image: url("tourquise.jpg");
+}
+
+.posts {
+    border: 3px solid turquoise;
+    padding: 10px;
+    margin: 20px 0px;
+}
+
+.posttitles {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#submit {
+    line-height: 300%;
+}
+
+#title, #content {
+
+}
+
+#cuba, #bahama {
+    height: 200px;
+    weight: 200px;
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin: 0px auto;
+}
