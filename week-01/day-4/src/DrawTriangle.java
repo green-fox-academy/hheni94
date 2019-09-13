@@ -7,13 +7,14 @@ public class DrawTriangle {
         Scanner number = new Scanner(System.in);
         int typednumber = number.nextInt();
 
-        for (int i = 1; i < typednumber; i++) {
+        for (int i = 1; i <= typednumber; i++) {
             for (int j = 0; j < i; j++) {
-                System.out.println("*");
+                System.out.print("*");
             }
-            System.out.println("*");
+            System.out.println();
         }
     }
 }
+
 
 
