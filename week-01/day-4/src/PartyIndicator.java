@@ -1,29 +1,29 @@
 import java.util.Scanner;
 
 public class PartyIndicator {
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
-            System.out.println("I will make a party. How many girls should I invite?");
-            Scanner girls = new Scanner(System.in);
-            int numberGirls = girls.nextInt();
-            System.out.println("How many boys should I invite?");
-            Scanner boys = new Scanner(System.in);
-            int numberBoys = boys.nextInt();
+        System.out.println("I will make a party. How many girls should I invite?");
+        Scanner scanner = new Scanner(System.in);
+        int girls = scanner.nextInt();
+        System.out.println("How many boys should I invite?");
+        int boys = scanner.nextInt();
 
-            int number = (numberGirls + numberBoys);
+        int guests = girls + boys;
 
-            if ((numberGirls == numberBoys) && (number >= 20)) {
-                System.out.println("The party is excellent!");
-            }
-            else if ((number >= 20) && (numberGirls != numberBoys)) {
-                System.out.println("Quite cool party!");
-            }
-            else if (number < 20) {
-                System.out.println("Average party...");
-            }
-            else if (numberGirls == 0) {
-                System.out.println("Sausage party");
-            }
+        if ((girls == boys) && (guests >= 20)) {
+            System.out.println("The party is excellent!");
+        }
+        else if ((guests >= 20) && (girls != boys)) {
+            System.out.println("Quite cool party");
+        }
+        else if (girls == 0) {
+            System.out.println("Sausage party");
+        }
+        else if (guests <20) {
+            System.out.println("Average party...");
         }
     }
+}
+
 
