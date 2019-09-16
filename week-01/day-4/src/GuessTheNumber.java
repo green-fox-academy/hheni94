@@ -8,6 +8,7 @@ public class GuessTheNumber {
         System.out.println("Please guess a number!");
         Scanner num = new Scanner(System.in);
 
+
         while (true) {
             int guessedNumber = num.nextInt();
             if (guessedNumber == number) {
@@ -15,10 +16,10 @@ public class GuessTheNumber {
                 break;
             }
             else if (guessedNumber < number) {
-                System.out.println("The stored number is higher. Please guess a new number ");
+                System.out.println("The stored number is higher. Please guess a new number! ");
             }
             else {
-                System.out.println("The stored number is lower. Please quess a new number ");
+                System.out.println("The stored number is lower. Please guess a new number! ");
             }
         }
     }
