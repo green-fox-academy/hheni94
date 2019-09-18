@@ -14,15 +14,16 @@ public class GoToCenter {
 
         Random random = new Random();
 
-        for (int i = 0; i <= 3 ; i++) {
-            int x = random.nextInt(500);
-            int y = random.nextInt(500);
+        for (int i = 0; i <= 3; i++) {
+            int x = random.nextInt(320);
+            int y = random.nextInt(320);
             centerLine(x, y, graphics);
         }
     }
-public static void centerLine(int x, int y, Graphics graphics) {
-        graphics.drawLine(x, y, WIDTH/2, HEIGHT/2);
-}
+
+    public static void centerLine(int x, int y, Graphics graphics) {
+        graphics.drawLine(x, y, WIDTH / 2, HEIGHT / 2);
+    }
 
     // Don't touch the code below
     static int WIDTH = 320;
