@@ -4,17 +4,15 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class LineInTheMiddle {
-    public static void mainDraw(Graphics graphics){
-        // draw a red horizontal line to the canvas' middle.
-        // draw a green vertical line to the canvas' middle.
+public class CenteredSquare {
 
-        graphics.setColor(Color.RED);
-        graphics.drawLine(0, HEIGHT/2, WIDTH/2, HEIGHT/2);
+    public static void mainDraw(Graphics graphics) {
+        // Draw a green 10x10 square to the canvas' center.
+
+        int squareSize = 10;
 
         graphics.setColor(Color.GREEN);
-        graphics.drawLine(HEIGHT/2, 0, HEIGHT/2, WIDTH/2);
-
+        graphics.fillRect(WIDTH/2-squareSize/2, HEIGHT/2-squareSize/2, squareSize, squareSize);
     }
 
     // Don't touch the code below
@@ -40,4 +38,3 @@ public class LineInTheMiddle {
         }
     }
 }
-
