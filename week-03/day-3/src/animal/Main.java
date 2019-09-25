@@ -5,8 +5,9 @@ public class Main {
 
     Animal animal1 = new Animal();
     animal1.eat();
-    System.out.println(animal1.hunger);
+    //System.out.println(animal1.hunger);
     animal1.drink();
-    System.out.println(animal1.thirst);
+    //System.out.println(animal1.thirst);
+    animal1.play();
   }
 }

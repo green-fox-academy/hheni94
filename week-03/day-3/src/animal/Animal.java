@@ -4,10 +4,8 @@ public class Animal {
   int hunger = 50;
   int thirst = 50;
 
-  /*public Animal(int hunger, int thirst) {
-    this.hunger = hunger;
-    this.thirst = thirst;
-  }*/
+  public Animal() {
+  }
 
   public void eat() {
     hunger -= 1;
