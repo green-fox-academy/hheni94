@@ -1,8 +1,8 @@
 package greenfoxorganization;
 
 public class Student extends Person {
-  String previousOrganization;
-  int skippedDays;
+  private String previousOrganization;
+  private int skippedDays;
 
   public Student(String name, int age, String gender, String previousOrganization) {
     super(name, age, gender);

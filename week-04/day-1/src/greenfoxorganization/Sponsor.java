@@ -1,8 +1,8 @@
 package greenfoxorganization;
 
-public class Sponsor extends Person{
-  String company;
-  int hiredStudents;
+public class Sponsor extends Person {
+  private String company;
+  private int hiredStudents;
 
   public Sponsor(String name, int age, String gender, String company) {
     super(name, age, gender);
@@ -25,6 +25,22 @@ public class Sponsor extends Person{
   }
 
   public void hire() {
-    hiredStudents ++;
+    hiredStudents++;
+  }
+
+  public void setCompany(String company) {
+    this.company = company;
+  }
+
+  public String getCompany() {
+    return this.company;
+  }
+
+  public void setHiredStudents(int hiredStudents) {
+    this.hiredStudents = hiredStudents;
+  }
+
+  public int getHiredStudents() {
+    return this.hiredStudents;
   }
 }
