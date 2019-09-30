@@ -21,10 +21,26 @@ public class Student extends Person {
 
   @Override
   public void introduce() {
-    System.out.println("Hi, I'm " + name + ", a " + age + " year old " + gender + " from " + previousOrganization + " who skipped " + skippedDays + " days from the course already.");
+    System.out.println("Hi, I'm " + getName() + ", a " + getAge() + " year old " + getGender() + " from " + previousOrganization + " who skipped " + skippedDays + " days from the course already.");
   }
 
   public void skipDays(int numberOfDays) {
     skippedDays = skippedDays + numberOfDays;
+  }
+
+  public void setPreviousOrganization(String previousOrganization) {
+    this.previousOrganization = previousOrganization;
+  }
+
+  public String getPreviousOrganization() {
+    return this.previousOrganization;
+  }
+
+  public void setSkippedDays(int skippedDays) {
+    this.skippedDays = skippedDays;
+  }
+
+  public int getSkippedDays() {
+    return this.skippedDays;
   }
 }
