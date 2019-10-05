@@ -7,16 +7,20 @@ public class Sponsor extends Person {
   public Sponsor(String name, int age, String gender, String company) {
     super(name, age, gender);
     this.company = company;
+    this.hiredStudents = 0;
   }
 
   public Sponsor() {
-    this.hiredStudents = 0;
+    super.setName("Jane Doe");
+    super.setAge(30);
+    super.setGender("female");
     this.company = "Google";
+    this.hiredStudents = 0;
   }
 
   @Override
   public void introduce() {
-    System.out.println("Hi, I'm " + getName() + ", a " + getAge() + " year old " + getGender() + " who represents " + company + " and hired " + hiredStudents + " students so far.");
+    System.out.println("Hi, I'm " + getName() + ", a " + getAge() + "year old " + getGender() + "who represents " + company + "and hired " + hiredStudents + "students so far.");
   }
 
   @Override
@@ -26,21 +30,5 @@ public class Sponsor extends Person {
 
   public void hire() {
     hiredStudents++;
-  }
-
-  public void setCompany(String company) {
-    this.company = company;
-  }
-
-  public String getCompany() {
-    return this.company;
-  }
-
-  public void setHiredStudents(int hiredStudents) {
-    this.hiredStudents = hiredStudents;
-  }
-
-  public int getHiredStudents() {
-    return this.hiredStudents;
   }
 }
