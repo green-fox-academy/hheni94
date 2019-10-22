@@ -10,8 +10,8 @@ import java.util.concurrent.atomic.AtomicLong;
 public class WebGreetCounterApp {
   AtomicLong loadCount = new AtomicLong();
 
-  @RequestMapping(value = "/greeting4")
+  @RequestMapping(value = "/web/greeting4")
   public Greeting greeting4(@RequestParam String name) {
-    return new Greeting(loadCount.incrementAndGet(), "Hello ," + name + "! This site was loaded " + loadCount.incrementAndGet() + " times since last server start.");
+    return new Greeting(loadCount.incrementAndGet(), "Hello ," + name + "! This site was loaded " + loadCount + " times since last server start.");
   }
 }
