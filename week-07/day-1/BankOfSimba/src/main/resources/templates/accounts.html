@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Bank of Simba</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Animal type</th>
+    </tr>
+    <tr>
+    <tr th:each="account : ${accountOfAnimal}">
+        <td th:text="${account.getName()}"></td>
+        <td th:text="${#numbers.formatDecimal(account.getBalance(), 0, 2, 'POINT')} + ' Zebra'"></td>
+        <td th:text="${account.getAnimalType()}"></td>
+    </tr>
+</table>
+</body>
+</html>
