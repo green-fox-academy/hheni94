@@ -56,7 +56,7 @@ public class BankAccount {
     isKing = king;
   }
 
-  public boolean isOwnerIsGoodGuy() {
+  public boolean getOwnerIsGoodGuy() {
     return ownerIsGoodGuy;
   }
 

@@ -23,7 +23,7 @@
             <td th:text="${account.getAnimalType()}"></td>
             <!--<td th:case="false">Bad guy</td>
             <td th:case="true">Good guy</td>-->
-            <td th:text="${account.isOwnerIsGoodGuy() ? 'Good guy' : 'Bad guy'}"></td>
+            <td th:text="${account.getOwnerIsGoodGuy() ? 'Good guy' : 'Bad guy'}"></td>
         <!--</div-->
     </tr>
 </table>
