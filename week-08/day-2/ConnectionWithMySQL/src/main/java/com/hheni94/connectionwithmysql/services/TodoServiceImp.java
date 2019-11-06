@@ -1,7 +1,6 @@
 package com.hheni94.connectionwithmysql.services;
 
 
-import com.hheni94.connectionwithmysql.controllers.ITodoService;
 import com.hheni94.connectionwithmysql.models.Todo;
 import com.hheni94.connectionwithmysql.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class TodoService implements ITodoService {
+public class TodoServiceImp implements ITodoService {
 
   private TodoRepository todoRepository;
 
   @Autowired
-  public TodoService(TodoRepository todoRepository) {
+  public TodoServiceImp(TodoRepository todoRepository) {
     this.todoRepository = todoRepository;
   }
 

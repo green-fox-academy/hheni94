@@ -1,7 +1,6 @@
 package com.hheni94.connectionwithmysql.controllers;
 
-import com.hheni94.connectionwithmysql.models.Todo;
-import com.hheni94.connectionwithmysql.services.TodoService;
+import com.hheni94.connectionwithmysql.services.ITodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

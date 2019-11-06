@@ -1,4 +1,4 @@
-package com.hheni94.connectionwithmysql.controllers;
+package com.hheni94.connectionwithmysql.services;
 
 import com.hheni94.connectionwithmysql.models.Todo;
 
