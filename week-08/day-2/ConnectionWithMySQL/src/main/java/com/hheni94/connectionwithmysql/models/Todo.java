@@ -1,9 +1,6 @@
 package com.hheni94.connectionwithmysql.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
@@ -12,12 +9,23 @@ public class Todo {
   @GeneratedValue(strategy = GenerationType.IDENTITY) //Automatikusan növelni fogja az ID-t
   private long id;
 
+  @Column(name = "action")
   private String title;
+
+  @Column(name = "is_urgent")
   private boolean urgent = false;
+
+  @Column(name = "is_done")
   private boolean done = false;
 
   public Todo(long id, String title, boolean urgent, boolean done) {
     this.id = id;
+    this.title = title;
+    this.urgent = urgent;
+    this.done = done;
+  }
+
+  public Todo(String title, boolean urgent, boolean done) {
     this.title = title;
     this.urgent = urgent;
     this.done = done;
