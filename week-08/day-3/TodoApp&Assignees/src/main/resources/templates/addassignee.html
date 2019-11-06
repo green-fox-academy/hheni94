@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App & Assignees</title>
+</head>
+<body>
+<h1>Add new assignee</h1>
+
+<form action="/assignee/add" method="post">
+    <label for="name">Name:</label><br>
+    <input type="search" id="name" name="name" placeholder="Agi">
+    <label for="email">Email:</label><br>
+    <input type="search" id="email" name="email" placeholder="abc@abcmail.com">
+    <button type="submit">Add assignee</button>
+</form>
+
+</body>
+</html>

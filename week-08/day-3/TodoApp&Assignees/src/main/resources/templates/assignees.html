@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App & Assignees</title>
+</head>
+<body>
+<h1>Assignees</h1>
+
+<a href="/assignee/add">Add new assignee</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+    </tr>
+    <tr th:each="assignee : ${assignees}">
+        <td th:text="${assignee.getId()}"></td>
+        <td th:text="${assignee.getName()}"></td>
+        <td th:text="${assignee.getEmail()}"></td>
+    </tr>
+</table>
+</body>
+</html>
