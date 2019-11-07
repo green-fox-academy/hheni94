@@ -36,4 +36,10 @@ public class AssigneeController {
     assigneeService.save(assignee);
     return "redirect:/assignee/list";
   }
+
+  @DeleteMapping(value = "/{id}/delete")
+  public String delete(@PathVariable(name = "id") Long id) {
+    assigneeService.delete(id);
+    return "redirect:/assignee/list";
+  }
 }

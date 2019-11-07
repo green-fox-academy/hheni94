@@ -42,9 +42,22 @@ public class TodoController {
     return "redirect:/todo/list";
   }
 
-  @GetMapping(value = "/{id}/delete")
+  @DeleteMapping(value = "/{id}/delete")
   public String delete(@PathVariable(name = "id") Long id) {
     service.delete(id);
+    return "redirect:/todo/list";
+  }
+
+  @GetMapping(value = "/{id}/edit")
+  public String showEditForm(Model model, @PathVariable(name = "id") Long id) {
+    model.addAttribute("editedTodo", service.findById(id));
+    return "edittodo";
+  }
+
+  @PostMapping(value = "/{editedId}/edit")
+  public String edit(Model model, @ModelAttribute Todo edited, @PathVariable(name = "editedId") Long newId) {
+    edited.setId(newId);
+    service.save(edited);
     return "redirect:/todo/list";
   }
 }

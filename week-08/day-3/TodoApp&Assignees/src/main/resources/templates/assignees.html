@@ -19,6 +19,7 @@
         <td th:text="${assignee.getId()}"></td>
         <td th:text="${assignee.getName()}"></td>
         <td th:text="${assignee.getEmail()}"></td>
+        <td><a th:href="@{'/assignee/' + ${assignee.getId()} + '/delete'}">delete</a></td>
     </tr>
 </table>
 </body>

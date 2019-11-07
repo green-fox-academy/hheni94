@@ -17,4 +17,6 @@ public interface ITodoService {
   Iterable<Todo> findAllByDone(Boolean done);
 
   List<Todo> searched(String searchedTodo);
+
+  Todo findById(Long id);
 }

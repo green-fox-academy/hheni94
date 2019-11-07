@@ -58,4 +58,9 @@ public class TodoServiceImp implements ITodoService {
   public List<Todo> searched(String searchedTodo) {
     return todoRepository.findTodoByActionNamePart("%" + searchedTodo + "%");
   }
+
+  @Override
+  public Todo findById(Long id) {
+    return todoRepository.findById(id).get();
+  }
 }
