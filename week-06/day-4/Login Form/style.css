@@ -1,0 +1,51 @@
+th, label{
+    text-transform: uppercase;
+    text-align: left;
+}
+
+body{
+    background: gainsboro;
+    margin: 30px 100px;
+}
+
+table{
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    padding: 10px 50px;
+    margin: 5px 5px;
+    font-family: Calibri;
+    color: #484848;
+}
+
+th{
+    font-size: 25px;
+    font-weight: normal;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+#forgot{
+    text-align: right;
+}
+
+#username, #password{
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+button{
+    background: black;
+    color: white;
+    padding: 10px 40px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+
+input{
+    width: 300px;
+    height: 40px;
+}

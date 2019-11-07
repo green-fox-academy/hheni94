@@ -1,0 +1,36 @@
+table{
+    width: 600px;
+    margin: 3%;
+}
+
+th{
+    background-color: black;
+    font-size: 20px;
+    border-bottom-width: 100px;
+}
+
+td{
+    font-size: 16px;
+}
+
+th, td, table{
+    text-align: left;
+    font-weight: initial;
+    font-family: Arial;
+    padding: 20px;
+    border: 2px solid gray;
+    color:grey;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even){
+    background-color: gainsboro;
+}
+
+tr:nth-child(odd){
+    background-color: white;
+}
+
+body{
+    background-color: dodgerblue;
+}
