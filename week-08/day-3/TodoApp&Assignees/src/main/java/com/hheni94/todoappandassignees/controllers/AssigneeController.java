@@ -42,4 +42,17 @@ public class AssigneeController {
     assigneeService.delete(id);
     return "redirect:/assignee/list";
   }
+
+  @GetMapping(value = "/{id}/edit")
+  public String showEditForm(Model model, @PathVariable(name = "id") Long id) {
+    model.addAttribute("editedAssignee", assigneeService.findById(id));
+    return "editassignee";
+  }
+
+  @PostMapping(value = "/{editedId}/edit")
+  public String edit(Model model, @ModelAttribute Assignee edited, @PathVariable(name = "editedId") Long newId) {
+    edited.setId(newId);
+    assigneeService.save(edited);
+    return "redirect:/assignee/list";
+  }
 }

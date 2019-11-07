@@ -10,4 +10,5 @@ public interface IAssigneeService {
   void editNameOfAssignee(long id);
   void delete(long id);
   void save(Assignee assignee);
+  Assignee findById(Long id);
 }
