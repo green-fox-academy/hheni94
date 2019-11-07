@@ -29,7 +29,7 @@
         <td th:text="${todo.getTitle()}"></td>
         <td th:text="${todo.isDone()}"></td>
         <td th:text="${todo.isUrgent()}"></td>
-        <td><a th:href="@{'/todo/delete/' + ${todo.id}}">delete</a></td>
+        <td><a th:href="@{'/todo/' + ${todo.getId()} + '/delete'}">delete</a></td>
     </tr>
 </table>
 </body>
