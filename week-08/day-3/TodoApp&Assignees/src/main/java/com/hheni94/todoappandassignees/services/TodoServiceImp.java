@@ -30,6 +30,11 @@ public class TodoServiceImp implements ITodoService {
     todoRepository.save(todo);
   }
 
+  @Override
+  public void delete(Long id) {
+    todoRepository.deleteById(id);
+  }
+
   /*public List<Todo> findAllByDone(Boolean done) {
     if (done != null) {
       return todoRepository.findAllByDone(!done);
