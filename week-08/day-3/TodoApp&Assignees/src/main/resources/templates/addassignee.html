@@ -7,12 +7,22 @@
 <body>
 <h1>Add new assignee</h1>
 
-<form action="/assignee/add" method="post">
+<!--
+<form action="/assignee/add" method="POST">
     <label for="name">Name:</label><br>
-    <input type="search" id="name" name="name" placeholder="Agi">
+    <input type="text" id="name" name="name" placeholder="Agi"><br>
     <label for="email">Email:</label><br>
-    <input type="search" id="email" name="email" placeholder="abc@abcmail.com">
+    <input type="email" id="email" name="email" placeholder="abc@abcmail.com">
     <button type="submit">Add assignee</button>
+</form>
+-->
+
+<form th:action="@{/assignee/add}" th:method="POST" th:object="${assignee}">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" th:field="*{name}" placeholder="xy"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" th:field="*{email}" placeholder="abc@abcmail.com"><br>
+    <button type="submit">Add</button>
 </form>
 
 </body>

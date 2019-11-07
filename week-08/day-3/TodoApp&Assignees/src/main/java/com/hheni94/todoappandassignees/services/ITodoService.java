@@ -10,6 +10,8 @@ public interface ITodoService {
 
   List<Todo> findAll();
 
+  void save(Todo todo);
+
   Iterable<Todo> findAllByDone(Boolean done);
 
   List<Todo> searched(String searchedTodo);

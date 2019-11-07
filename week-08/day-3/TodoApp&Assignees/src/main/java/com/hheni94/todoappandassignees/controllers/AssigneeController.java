@@ -6,20 +6,16 @@ import com.hheni94.todoappandassignees.services.IAssigneeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/assignee")
 public class AssigneeController {
 
   private IAssigneeService assigneeService;
-  private AssigneeRepository assigneeRepository;
 
   @Autowired
-  public AssigneeController(IAssigneeService assigneeService, AssigneeRepository assigneeRepository) {
+  public AssigneeController(IAssigneeService assigneeService) {
     this.assigneeService = assigneeService;
   }
 
@@ -29,9 +25,15 @@ public class AssigneeController {
     return "assignees";
   }
 
-  @PostMapping(value = "/add")
-  public String addNewAssignee(@RequestParam String name, String email) {
-    assigneeService.addNewAssignee(name, email);
+  @GetMapping(value = "/add")
+  public String add(@ModelAttribute(name = "assignee")Assignee assignee) {
+  //public String add() {
     return "addassignee";
+  }
+
+  @PostMapping(value= "/add")
+  public String save(@ModelAttribute(name = "assignee")Assignee assignee) {
+    assigneeService.save(assignee);
+    return "redirect:/assignee/list";
   }
 }

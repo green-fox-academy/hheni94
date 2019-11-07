@@ -25,6 +25,11 @@ public class TodoServiceImp implements ITodoService {
     return todoList;
   }
 
+  @Override
+  public void save(Todo todo) {
+    todoRepository.save(todo);
+  }
+
   /*public List<Todo> findAllByDone(Boolean done) {
     if (done != null) {
       return todoRepository.findAllByDone(!done);

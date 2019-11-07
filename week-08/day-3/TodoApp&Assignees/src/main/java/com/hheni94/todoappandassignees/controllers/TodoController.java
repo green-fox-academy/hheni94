@@ -5,10 +5,7 @@ import com.hheni94.todoappandassignees.services.ITodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/todo") //Így ha a localhost-ot megnyitom, akkor mindegyik endpoint elé ez a /todo kerül.
@@ -32,5 +29,16 @@ public class TodoController {
   public String search(Model model, @RequestParam String searched) {
     model.addAttribute("todos", service.searched(searched));
     return "todolist";
+  }
+
+  @GetMapping(value = "/add")
+  public String add(@ModelAttribute(name = "todo")Todo todo) {
+    return "addtodo";
+  }
+
+  @PostMapping(value = "/add")
+  public String save(@ModelAttribute(name = "todo")Todo todo) {
+    service.save(todo);
+    return "redirect:/todo/list";
   }
 }

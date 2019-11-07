@@ -37,7 +37,14 @@ public class AssigneeServiceImp implements IAssigneeService {
   }
 
   @Override
+  public void save(Assignee assignee) {
+    assigneeRepository.save(assignee);
+  }
+
+  /*@Override
   public void addNewAssignee(String name, String email) {
     assigneeRepository.save(new Assignee(name, email));
-  }
+  }*/
+
+
 }

@@ -9,5 +9,6 @@ public interface IAssigneeService {
   List<Assignee> findAll();
   void editNameOfAssignee(long id);
   void delete(long id);
-  void addNewAssignee(String name, String email);
+  //void addNewAssignee(String name, String email);
+  void save(Assignee assignee);
 }
