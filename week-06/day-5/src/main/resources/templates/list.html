@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Webshop</title>
+</head>
+<body>
+    <form>
+        <h1>My Shop</h1><br>
+        <tr>
+            <td>
+                <button formaction="/only-available
+                " type="submit">only available</button>
+                <button formaction="/cheapest-first" type="submit">cheapest first</button>
+                <button formaction="/contains-nike" type="submit">contains nike</button>
+                <button type="submit">average stock</button>
+                <button type="submit">most expensive available</button>
+            </td>
+        </tr>
+    </form>
+
+    <form>
+        <label id="searchtext" for="text">Search for:</label><br>
+        <input type="text" id="text" placeholder="...something like nike" name="textBox">
+        <button id="search" type="submit">Search</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of stock</th>
+        </tr>
+        <tr>
+            <tr th:each="shopItem : ${shopItems}">
+                <td id="name" th:text="${shopItem.getName()}"></td>
+                <td id="description" th:text="${shopItem.getDescription()}"></td>
+                <td id="price" th:text="${shopItem.getPrice()} + ' Kč'"></td>
+                <td id="quantity" th:text="${shopItem.getQuantityOfStock()}"></td>
+        </tr>
+    </table>
+</body>
+</html>

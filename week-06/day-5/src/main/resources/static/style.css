@@ -1,0 +1,79 @@
+h1{
+    color: #00bfff;
+    border-bottom: 2px solid #00bfff;
+    font-size: 38px;
+    margin-bottom: 3px;
+}
+
+button{
+    background: #df2020;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 30px;
+}
+
+#search{
+    text-transform: none;
+    width: 85px;
+    height: 48px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#searchtext{
+    font-size: 20px;
+    font-family: Calibri;
+    color: #df2020;
+    font-weight: bold;
+    padding-bottom: 1px;
+}
+
+#text{
+    border-radius: 8px;
+    border: 2px solid #df2020;
+    width: 550px;
+    height: 45px;
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+h1, button, table{
+    font-family: Calibri;
+    font-weight: bold;
+}
+
+th{
+    font-size: 20px;
+    background-color: #00bfff;
+    border: 0,5px solid white;
+    padding: 8px;
+}
+
+table{
+    width: 645px;
+    height: 300px;
+}
+
+#price, #quantity{
+    text-align: center;
+    font-size: 25px;
+}
+
+#name{
+    font-size: 20px;
+}
+
+#description{
+    font-size: 15px;
+}
+
+#name, #description, #price, #quantity{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
