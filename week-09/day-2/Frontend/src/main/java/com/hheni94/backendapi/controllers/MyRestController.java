@@ -1,5 +1,6 @@
 package com.hheni94.backendapi.controllers;
 
+import com.hheni94.backendapi.models.Append;
 import com.hheni94.backendapi.models.MyError;
 import com.hheni94.backendapi.models.MyWelcome;
 import com.hheni94.backendapi.models.Number;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,6 +44,15 @@ public class MyRestController {
       }
     } else {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MyError("Please provide a title!"));
+    }
+  }
+
+  @GetMapping(value = "/appenda/{appendable}")
+  public ResponseEntity<?> append(@PathVariable String appendable) {
+    if (appendable != null) {
+      return ResponseEntity.status(HttpStatus.OK).body(new Append(appendable + 'a'));
+    } else {
+      return new ResponseEntity (HttpStatus.NOT_FOUND);
     }
   }
 }
