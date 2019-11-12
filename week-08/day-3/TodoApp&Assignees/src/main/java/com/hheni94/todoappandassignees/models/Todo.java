@@ -18,11 +18,18 @@ public class Todo {
   @Column(name = "is_done")
   private boolean done = false;
 
-  public Todo(long id, String title, boolean urgent, boolean done) {
+  @ManyToOne()
+  private Assignee assignee;
+
+  @Transient //Ez nem fog belekerülni az adatbázisba, amit ezzel megjelölök.
+  private Long assigneeId;
+
+  public Todo(long id, String title, boolean urgent, boolean done, Assignee assignee) {
     this.id = id;
     this.title = title;
     this.urgent = urgent;
     this.done = done;
+    this.assignee = assignee;
   }
 
   public Todo(String title, boolean urgent, boolean done) {
@@ -32,6 +39,14 @@ public class Todo {
   }
 
   public Todo() {
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 
   public Todo(String title) {
@@ -68,5 +83,13 @@ public class Todo {
 
   public void setDone(boolean done) {
     this.done = done;
+  }
+
+  public Long getAssigneeId() {
+    return assigneeId;
+  }
+
+  public void setAssigneeId(Long assigneeId) {
+    this.assigneeId = assigneeId;
   }
 }

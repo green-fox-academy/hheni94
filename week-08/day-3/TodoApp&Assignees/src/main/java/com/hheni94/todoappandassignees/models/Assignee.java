@@ -2,10 +2,9 @@ package com.hheni94.todoappandassignees.models;
 
 import com.sun.javafx.geom.transform.Identity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Assignee {
@@ -16,12 +15,17 @@ public class Assignee {
   private String name;
   private String email;
 
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "assignee", fetch = FetchType.EAGER)
+  private List<Todo> todos;
+
   public Assignee(String name, String email) {
     this.name = name;
     this.email = email;
+    this.todos = new ArrayList<>();
   }
 
   public Assignee() {
+    this.todos = new ArrayList<>();
   }
 
   public String getName() {
@@ -46,5 +50,19 @@ public class Assignee {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public List<Todo> getTodos() {
+    return todos;
+  }
+
+  public void addTodo(Todo todo) {
+    todo.setAssignee(this);
+    todos.add(todo);
+  }
+
+  @Override
+  public String toString() {
+    return this.name;
   }
 }

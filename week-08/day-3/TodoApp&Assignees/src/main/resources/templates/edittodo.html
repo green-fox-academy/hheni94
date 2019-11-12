@@ -10,10 +10,14 @@
 <form th:action="@{'/todo/' + ${editedTodo.getId()} + '/edit'}" th:method="POST" th:object="${editedTodo}">
     <label for="text">Todo Description</label>
     <input type="text" id="text" th:field="*{title}"><br>
-    <label for="urgent">Urgent</label>
-    <input type="checkbox" id="urgent" th:field="*{urgent}"><br>
     <label for="done">Done</label>
     <input type="checkbox" id="done" th:field="*{done}"><br>
+    <label for="urgent">Urgent</label>
+    <input type="checkbox" id="urgent" th:field="*{urgent}"><br>
+    <label for="assignee">Select assignee</label>
+    <select id="assignee" th:field="*{assigneeId}">
+        <option th:each="assignee : ${assignees}" th:value="${assignee.getId()}" th:text="${assignee.getName()}"></option>
+    </select>
     <button type="submit">Edit</button>
     <a href="/todo/list">Cancel</a>
 </form>
