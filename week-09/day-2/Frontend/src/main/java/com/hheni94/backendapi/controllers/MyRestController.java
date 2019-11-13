@@ -3,6 +3,7 @@ package com.hheni94.backendapi.controllers;
 import com.hheni94.backendapi.models.*;
 import com.hheni94.backendapi.models.Number;
 import com.hheni94.backendapi.services.ILogService;
+import com.hheni94.backendapi.services.ISithService;
 import com.hheni94.backendapi.services.NumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,11 +18,13 @@ public class MyRestController {
 
   private NumberService numberService;
   private ILogService iLogService;
+  private ISithService iSithService;
 
   @Autowired
-  public MyRestController(NumberService numberService, ILogService iLogService) {
+  public MyRestController(NumberService numberService, ILogService iLogService, ISithService iSithService) {
     this.numberService = numberService;
     this.iLogService = iLogService;
+    this.iSithService = iSithService;
   }
 
   @GetMapping(value = "/doubling")
@@ -100,5 +103,10 @@ public class MyRestController {
   @GetMapping(value = "/log")
   public ResponseEntity<Object> listLogs() {
     return ResponseEntity.status(HttpStatus.OK).body(new LogOutput(iLogService.listAllLog(), iLogService.listAllLog().size()));
+  }
+
+  @PostMapping(value = "/sith")
+  public ResponseEntity<?> reverseText(@RequestBody (required = false) Sith text) {
+    return ResponseEntity.status(HttpStatus.OK).body(new Yoda(iSithService.reverseSentence(text.getText())));
   }
 }
