@@ -106,7 +106,11 @@ public class MyRestController {
   }
 
   @PostMapping(value = "/sith")
-  public ResponseEntity<?> reverseText(@RequestBody (required = false) Sith text) {
-    return ResponseEntity.status(HttpStatus.OK).body(new Yoda(iSithService.reverseSentence(text.getText())));
+  public ResponseEntity<?> reverseText(@RequestBody(required = false) Sith text) {
+    if (text == null || text.getText() == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MyError("Feed me some text you have to, padawan young you are. Hmmm."));
+    } else {
+      return ResponseEntity.status(HttpStatus.OK).body(new Yoda(iSithService.reverseSentence(text.getText())));
+    }
   }
 }

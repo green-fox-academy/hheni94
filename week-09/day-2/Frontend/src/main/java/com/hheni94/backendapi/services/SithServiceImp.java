@@ -12,7 +12,8 @@ public class SithServiceImp implements ISithService {
     String[] addedThings = {"Err..err.err.", "Uhmm.", "Arrgh."};
     String reversedText = "";
     Random random = new Random();
-    String[] sentences = originalText.split("\\.");
+
+    String[] sentences = originalText.toLowerCase().split("\\. ");
     String[] modifiedSentences = new String[sentences.length];
     for (int i = 0; i < sentences.length; i++) {
       String[] words = sentences[i].split(" ");
@@ -37,9 +38,9 @@ public class SithServiceImp implements ISithService {
         changedWords[words.length - 1] = words[words.length - 1];
       }
       for (String word : changedWords) {
-        temp += word;
+        temp += word + " ";
       }
-      modifiedSentences[i] = temp;
+      modifiedSentences[i] = temp.substring(0, 1).toUpperCase() + temp.substring(1, temp.length() - 1) + " ";
     }
     for (String sentence : modifiedSentences) {
       reversedText += sentence + addedThings[random.nextInt(addedThings.length)];
