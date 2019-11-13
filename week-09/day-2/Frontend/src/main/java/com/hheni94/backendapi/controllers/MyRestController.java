@@ -1,17 +1,14 @@
 package com.hheni94.backendapi.controllers;
 
-import com.hheni94.backendapi.models.Append;
-import com.hheni94.backendapi.models.MyError;
-import com.hheni94.backendapi.models.MyWelcome;
+import com.hheni94.backendapi.models.*;
 import com.hheni94.backendapi.models.Number;
 import com.hheni94.backendapi.services.NumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.xml.ws.Response;
 
 @RestController
 public class MyRestController {
@@ -24,7 +21,7 @@ public class MyRestController {
   }
 
   @GetMapping(value = "/doubling")
-  public ResponseEntity<Object> getDoubled(@RequestParam (required = false) Integer input) {
+  public ResponseEntity<Object> getDoubled(@RequestParam(required = false) Integer input) {
     if (input != null) {
       return ResponseEntity.status(HttpStatus.OK).body(new Number(input));
     } else {
@@ -32,8 +29,8 @@ public class MyRestController {
     }
   }
 
-  @GetMapping( value = "/greeter")
-  public ResponseEntity<Object> greet(@RequestParam (required = false) String name, @RequestParam (required = false) String title) {
+  @GetMapping(value = "/greeter")
+  public ResponseEntity<Object> greet(@RequestParam(required = false) String name, @RequestParam(required = false) String title) {
     if (name != null && title != null) {
       return ResponseEntity.status(HttpStatus.OK).body(new MyWelcome("Oh, hi there " + name + ", my dear " + title + "!"));
     } else if (name == null) {
@@ -52,7 +49,20 @@ public class MyRestController {
     if (appendable != null) {
       return ResponseEntity.status(HttpStatus.OK).body(new Append(appendable + 'a'));
     } else {
-      return new ResponseEntity (HttpStatus.NOT_FOUND);
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  @PostMapping(value = "/dountil/{action}")
+  public ResponseEntity<?> doUntil(@RequestBody (required = false) DoUntil number, @PathVariable String action) {
+    if (action.equals("sum")) {
+      return ResponseEntity.status(HttpStatus.OK).body(new DoUntilResult(numberService.sum(number.getUntil())));
+    } else if (action.equals("factor")) {
+      return ResponseEntity.status(HttpStatus.OK).body(new DoUntilResult(numberService.factor(number.getUntil())));
+    } else if (number == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MyError("Please provide a number!"));
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
 }

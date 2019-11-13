@@ -21,6 +21,21 @@ public class NumberService {
     return numberRepository.getAllNumbers();
   }
 
+  public int sum(int number) {
+    int result = 0;
+    for (int i = 0; i < number + 1; i++) {
+      result += i;
+    }
+    return result;
+  }
+
+  public int factor(int number) {
+    int result = 1;
+    for (int i = 1; i < number + 1; i++) {
+      result *= i;
+    }
+    return result;
+  }
 //  public Number getDoubledNumber(int inputNumber) {
 //    Number newNumber = new Number(inputNumber);
 //    numberRepository.addNumber(newNumber);
