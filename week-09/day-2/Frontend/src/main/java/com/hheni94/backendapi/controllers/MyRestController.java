@@ -54,7 +54,7 @@ public class MyRestController {
   }
 
   @PostMapping(value = "/dountil/{action}")
-  public ResponseEntity<?> doUntil(@RequestBody (required = false) DoUntil number, @PathVariable String action) {
+  public ResponseEntity<?> doUntil(@RequestBody(required = false) DoUntil number, @PathVariable String action) {
     if (action.equals("sum")) {
       return ResponseEntity.status(HttpStatus.OK).body(new DoUntilResult(numberService.sum(number.getUntil())));
     } else if (action.equals("factor")) {
@@ -63,6 +63,23 @@ public class MyRestController {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MyError("Please provide a number!"));
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+
+  @PostMapping(value = "/arrays")
+  public ResponseEntity<?> arrayHandler(@RequestBody(required = false) MyArray inputArray) {
+    if (inputArray == null || inputArray.getWhat() == null || inputArray.getNumbers() == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new MyError("Please provide what to do with the numbers!"));
+    } else {
+      if (inputArray.getWhat().equals("sum")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new MyArrayResultInt(numberService.sumArray(inputArray.getNumbers())));
+      } else if (inputArray.getWhat().equals("multiply")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new MyArrayResultInt(numberService.multiplyArray(inputArray.getNumbers())));
+      } else if (inputArray.getWhat().equals("double")) {
+        return ResponseEntity.status(HttpStatus.OK).body(new MyArrayResultArray(numberService.doubleArray(inputArray.getNumbers())));
+      } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      }
     }
   }
 }

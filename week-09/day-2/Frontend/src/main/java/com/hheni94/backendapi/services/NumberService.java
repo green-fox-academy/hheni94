@@ -36,6 +36,30 @@ public class NumberService {
     }
     return result;
   }
+
+  public int sumArray(int[] inputNumbers) {
+    int result = 0;
+    for (int i = 0; i < inputNumbers.length; i++) {
+      result += inputNumbers[i];
+    }
+    return result;
+  }
+
+  public int multiplyArray(int[] inputNumbers) {
+    int result = 1;
+    for (int i = 0; i < inputNumbers.length; i++) {
+      result *= inputNumbers[i];
+    }
+    return result;
+  }
+  
+  public int[] doubleArray(int[] inputNumbers) {
+    int[] result = new int[inputNumbers.length];
+    for (int i = 0; i < inputNumbers.length; i++) {
+      result[i] = inputNumbers[i] * 2;
+    }
+    return result;
+  }
 //  public Number getDoubledNumber(int inputNumber) {
 //    Number newNumber = new Number(inputNumber);
 //    numberRepository.addNumber(newNumber);
