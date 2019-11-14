@@ -49,7 +49,7 @@ public class TodoController {
 
   @GetMapping(value = "/{id}/delete")
   public String delete(@PathVariable(name = "id") Long id) {
-    service.delete(id);
+    service.delete(service.findById(id));
     return "redirect:/todo/list";
   }
 
@@ -61,10 +61,10 @@ public class TodoController {
   }
 
   @PostMapping(value = "/{editedId}/edit")
-  public String edit(Model model, @ModelAttribute Todo edited, @PathVariable(name = "editedId") Long newId) {
-    edited.setId(newId);
+  public String edit(@ModelAttribute Todo edited, @PathVariable(name = "editedId") Long currentTodoId) {
+    edited.setId(currentTodoId);
     //edited.getAssignee().getId();
-    edited.setAssignee(assigneeService.findById(edited.getAssigneeId()));
+    edited.setAssignee(assigneeService.findById(edited.getAssigneeIdForEditing()));
     //assigneeService.findById(edited.getAssigneeId());
     service.save(edited);
 //    edited.setAssignee(assigneeService.findById(newId));

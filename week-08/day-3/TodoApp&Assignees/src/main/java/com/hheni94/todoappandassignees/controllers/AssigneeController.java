@@ -1,12 +1,15 @@
 package com.hheni94.todoappandassignees.controllers;
 
 import com.hheni94.todoappandassignees.models.Assignee;
+import com.hheni94.todoappandassignees.models.Todo;
 import com.hheni94.todoappandassignees.repositories.AssigneeRepository;
 import com.hheni94.todoappandassignees.services.IAssigneeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/assignee")
@@ -54,5 +57,13 @@ public class AssigneeController {
     edited.setId(newId);
     assigneeService.save(edited);
     return "redirect:/assignee/list";
+  }
+
+  @GetMapping(value = "/assigneetasks/{id}")
+  public String listTasksForAssignee(@PathVariable (required = false) Long id, Model model) { //Azért kell a model, mert a template-nek visszaadjuk a listát.
+    //List<Todo> tasksForAssignee = assigneeService.findById(id).getTodos();
+    model.addAttribute("assigneeName", assigneeService.findById(id).getName());
+    model.addAttribute("todoList", assigneeService.findById(id).getTodos());
+    return "assigneetasks";
   }
 }

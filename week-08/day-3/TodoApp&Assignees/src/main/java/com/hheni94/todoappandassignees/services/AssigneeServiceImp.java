@@ -43,7 +43,11 @@ public class AssigneeServiceImp implements IAssigneeService {
 
   @Override
   public Assignee findById(Long id) {
-    return assigneeRepository.findById(id).get();
+    if (!assigneeRepository.findById(id).isPresent()) {
+      return null;
+    } else {
+      return assigneeRepository.findById(id).get();
+    }
   }
 
   /*@Override

@@ -42,7 +42,7 @@ public class Todo {
   }
 
   public Assignee getAssignee() {
-    return assignee;
+      return assignee;
   }
 
   public void setAssignee(Assignee assignee) {
@@ -86,10 +86,26 @@ public class Todo {
   }
 
   public Long getAssigneeId() {
+    if (assignee == null) {
+      return 0L;
+    } else {
+      return assignee.getId();
+    }
+  }
+
+  public String getAssigneeName() {
+    if (assignee == null) {
+      return "";
+    } else {
+      return assignee.getName();
+    }
+  }
+
+  public Long getAssigneeIdForEditing() {
     return assigneeId;
   }
 
-  public void setAssigneeId(Long assigneeId) {
-    this.assigneeId = assigneeId;
+  public void setAssigneeId (Long assigneeId){
+      this.assigneeId = assigneeId;
+    }
   }
-}

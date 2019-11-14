@@ -3,36 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo list</title>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>Todos for today:</h1>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
 
-<form action="/todo/list" method="post">
-    <label id="searchtext" for="text">Search for todos:</label><br>
-    <input type="text" id="text" name="searched">
-    <button type="submit">Search</button>
-</form>
+<div class="container">
+    <div class="row justify-content-center">
+        <h1>TODOS FOR TODAY</h1>
+    </div>
 
-<a href="/todo/add">Add new todo</a><br>
-<a href="/assignee/">List of Assignees</a>
+    <div class="row justify-content-center">
+        <form action="/todo/list" method="post">
+            <label id="searchtext" for="text">Search for todos:</label>
+            <input type="text" id="text" name="searched">
+            <button type="submit" class="btn btn-secondary">Search</button>
+        </form>
+    </div>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>ACTION</th>
-        <th>DONE</th>
-        <th>URGENT</th>
-        <th>ASSIGNEE</th>
-    </tr>
-    <tr th:each="todo : ${todos}">
-        <td th:text="${todo.getId()}"></td>
-        <td th:text="${todo.getTitle()}"></td>
-        <td th:text="${todo.isDone()}"></td>
-        <td th:text="${todo.isUrgent()}"></td>
-        <td th:text="${todo.getAssignee()}"></td>
-        <td><a th:href="@{'/todo/' + ${todo.getId()} + '/delete'}">delete</a></td>
-        <td><a th:href="@{'/todo/' + ${todo.getId()} + '/edit'}">edit</a></td>
-    </tr>
-</table>
+    <div class="row justify-content-center">
+        <a href="/todo/add" class="btn btn-info">Add new todo</a>
+        <a href="/assignee/" class="btn btn-info">List of Assignees</a>
+    </div>
+
+    <div class="row justify-content-center">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>ACTION</th>
+                <th>DONE</th>
+                <th>URGENT</th>
+                <th>ASSIGNEE</th>
+            </tr>
+            <tr th:each="todo : ${todos}">
+                <td th:text="${todo.getId()}"></td>
+                <td th:text="${todo.getTitle()}"></td>
+                <td th:text="${todo.isDone()}"></td>
+                <td th:text="${todo.isUrgent()}"></td>
+                <td><a th:href="@{'/assignee/assigneetasks/' + ${todo.getAssigneeId()}}"
+                       th:text="${todo.getAssigneeName()}"></a></td>
+                <td><a th:href="@{'/todo/' + ${todo.getId()} + '/delete'}" class="btn btn-danger">delete</a></td>
+                <td><a th:href="@{'/todo/' + ${todo.getId()} + '/edit'}" class="btn btn-primary">edit</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>

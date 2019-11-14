@@ -12,7 +12,7 @@ public interface ITodoService {
 
   void save(Todo todo);
 
-  void delete(Long id);
+  void delete(Todo todo);
 
   Iterable<Todo> findAllByDone(Boolean done);
 

@@ -31,8 +31,8 @@ public class TodoServiceImp implements ITodoService {
   }
 
   @Override
-  public void delete(Long id) {
-    todoRepository.deleteById(id);
+  public void delete(Todo todo) {
+    todoRepository.delete(todo);
   }
 
   /*public List<Todo> findAllByDone(Boolean done) {
@@ -61,6 +61,10 @@ public class TodoServiceImp implements ITodoService {
 
   @Override
   public Todo findById(Long id) {
-    return todoRepository.findById(id).get();
+    if (!todoRepository.findById(id).isPresent()) {
+      return null;
+    } else {
+      return todoRepository.findById(id).get();
+    }
   }
 }
