@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trick Center</title>
+</head>
+<body>
+<form th:action="@{/trickcenter/(name=${name})}" th:method="post">
+    <label>Tricks</label>
+    <select name="trickToLearn">
+        <option th:each="learnable : ${learnables}" th:text="${learnable}" th:value="${learnable}"></option>
+    </select>
+    <button type="submit">Learn</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<body>
+<h1>Create new fox</h1><br>
+<form th:action="@{/create}" th:method="post" th:object="${fox}">
+    <label>Name</label>
+    <input type="text" th:field="*{name}" required placeholder="Name" oninvalid="this.setCustomValidity('Please add a name!')"><br>
+    <label>Food</label>
+    <input type="text" th:field="*{food}" required placeholder="Food" oninvalid="this.setCustomValidity('Please add a food!')"><br>
+    <label>Drink</label>
+    <input type="text" th:field="*{drink}" required placeholder="Drink" oninvalid="this.setCustomValidity('Please add a drink!')"><br><br>
+    <button type="submit">Create</button>
+</form>
+<a th:href="@{/login}">Login</a>
+</body>
+</html>

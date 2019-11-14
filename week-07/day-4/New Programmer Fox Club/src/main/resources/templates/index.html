@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Programmer Fox Club</title>
+</head>
+<body>
+<ul>
+    <li> <a th:href="@{/(name=${fox.name})}">Information</a></li><br>
+    <li> <a th:href="@{/nutritionstore/(name=${fox.name})}">Nutrition Store</a></li><br>
+    <li> <a th:href="@{/trickcenter/(name=${fox.name})}">Trick Center</a></li>
+</ul>
+<img src="/images/greenfox.png"alt="Image about a green fox">
+<p th:text="|This is ${fox.getName()}. Currently living on ${fox.getFood()} and ${fox.getDrink()}. He knows ${fox.tricks.size()} tricks.|"></p>
+<h1>Known tricks</h1>
+<ul>
+    <li th:if="${fox.tricks.size() == 0}">You know no tricks yet. Go and learn some.</li>
+    <li th:unless="${fox.tricks.size() == 0}" th:each="trick : ${fox.getTricks()}" th:text="${trick}"></li>
+</ul>
+</body>
+</html>
