@@ -3,25 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo App & Assignees</title>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>Assignees</h1>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
 
-<a href="/assignee/add">Add new assignee</a>
+<div class="container">
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>EMAIL</th>
-    </tr>
-    <tr th:each="assignee : ${assignees}">
-        <td th:text="${assignee.getId()}"></td>
-        <td><a th:href="@{'/assignee/assigneetasks/' + ${assignee.getId()}}" th:text="${assignee.getName()}"></a></td>
-        <td th:text="${assignee.getEmail()}"></td>
-        <td><a th:href="@{'/assignee/' + ${assignee.getId()} + '/delete'}">delete</a></td>
-        <td><a th:href="@{'/assignee/' + ${assignee.getId()} + '/edit'}">edit</a></td>
-    </tr>
-</table>
+    <div class="row justify-content-center">
+        <h1>ASSIGNEES</h1>
+    </div>
+
+    <div class="row justify-content-center">
+        <a href="/assignee/add" class="btn btn-info">Add new assignee</a>
+    </div>
+
+    <div class="row justify-content-center">
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>DELETE</th>
+                <th>EDIT</th>
+            </tr>
+            <tr th:each="assignee : ${assignees}">
+                <td th:text="${assignee.getId()}"></td>
+                <td><a th:href="@{'/assignee/assigneetasks/' + ${assignee.getId()}}"
+                       th:text="${assignee.getName()}"></a></td>
+                <td th:text="${assignee.getEmail()}"></td>
+                <td><a th:href="@{'/assignee/' + ${assignee.getId()} + '/delete'}" class="btn btn-danger">delete</a>
+                </td>
+                <td><a th:href="@{'/assignee/' + ${assignee.getId()} + '/edit'}" class="btn btn-primary">edit</a></td>
+            </tr>
+        </table>
+        <a href="/todo/list">Back</a>
+    </div>
+
+</div>
 </body>
 </html>

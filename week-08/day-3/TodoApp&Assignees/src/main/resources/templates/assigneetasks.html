@@ -3,25 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo list</title>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<h1 th:text="${assigneeName}"></h1>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>ACTION</th>
-        <th>DONE</th>
-        <th>URGENT</th>
-        <th>ASSIGNEE</th>
-    </tr>
-    <tr th:each="todo : ${todoList}">
-        <td th:text="${todo.getId()}"></td>
-        <td th:text="${todo.getTitle()}"></td>
-        <td th:text="${todo.isDone()}"></td>
-        <td th:text="${todo.isUrgent()}"></td>
-        <td th:text="${todo.getAssignee()}"></td>
-    </tr>
-</table>
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <h1 th:text="${assigneeName}"></h1>
+
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>ACTION</th>
+                <th>DONE</th>
+                <th>URGENT</th>
+                <th>CREATED</th>
+                <th>DUE</th>
+                <th>ASSIGNEE</th>
+            </tr>
+            <tr th:each="todo : ${todoList}">
+                <td th:text="${todo.getId()}"></td>
+                <td th:text="${todo.getTitle()}"></td>
+                <td th:text="${todo.isDone()}"></td>
+                <td th:text="${todo.isUrgent()}"></td>
+                <td th:text="${todo.getCreationDate()}"></td>
+                <td th:text="${todo.getDueDate()}"></td>
+                <td th:text="${todo.getAssignee()}"></td>
+            </tr>
+        </table>
+        <a href="/todo/list">Back</a>
+    </div>
+</div>
 </body>
 </html>

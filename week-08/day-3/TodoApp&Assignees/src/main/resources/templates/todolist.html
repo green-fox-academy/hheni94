@@ -15,9 +15,15 @@
     </div>
 
     <div class="row justify-content-center">
-        <form action="/todo/list" method="post">
-            <label id="searchtext" for="text">Search for todos:</label>
-            <input type="text" id="text" name="searched">
+        <form th:action="@{/todo/list}" th:method="post">
+            <label id="searchtext" for="what">Search for todos by:</label>
+            <select id="what" name="searchByWHat">
+                <option th:value="action">Action</option>
+                <option th:value="creationDate">Creation Date</option>
+                <option th:value="dueDate">Due Date</option>
+                <option th:value="assigneeName">Assignee Name</option>
+            </select>
+            <input type="search" name="searchedTodo">
             <button type="submit" class="btn btn-secondary">Search</button>
         </form>
     </div>
@@ -34,13 +40,19 @@
                 <th>ACTION</th>
                 <th>DONE</th>
                 <th>URGENT</th>
+                <th>CREATED</th>
+                <th>DUE</th>
                 <th>ASSIGNEE</th>
+                <th>DELETE</th>
+                <th>EDIT</th>
             </tr>
             <tr th:each="todo : ${todos}">
                 <td th:text="${todo.getId()}"></td>
                 <td th:text="${todo.getTitle()}"></td>
                 <td th:text="${todo.isDone()}"></td>
                 <td th:text="${todo.isUrgent()}"></td>
+                <td th:text="${todo.getCreationDate()}"></td>
+                <td th:text="${todo.getDueDate()}"></td>
                 <td><a th:href="@{'/assignee/assigneetasks/' + ${todo.getAssigneeId()}}"
                        th:text="${todo.getAssigneeName()}"></a></td>
                 <td><a th:href="@{'/todo/' + ${todo.getId()} + '/delete'}" class="btn btn-danger">delete</a></td>

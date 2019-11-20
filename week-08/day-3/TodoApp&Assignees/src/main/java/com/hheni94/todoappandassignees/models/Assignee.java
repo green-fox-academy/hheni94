@@ -15,7 +15,9 @@ public class Assignee {
   private String name;
   private String email;
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "assignee", fetch = FetchType.LAZY)
+  //@OneToMany(cascade = CascadeType.ALL, mappedBy = "assignee", fetch = FetchType.LAZY)
+  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+  @JoinColumn(name = "assignee_id")
   private List<Todo> todos;
 
   public Assignee(String name, String email) {

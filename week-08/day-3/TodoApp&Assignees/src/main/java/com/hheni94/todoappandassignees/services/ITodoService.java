@@ -12,11 +12,11 @@ public interface ITodoService {
 
   void save(Todo todo);
 
-  void delete(Todo todo);
+  void delete(Long id);
 
   Iterable<Todo> findAllByDone(Boolean done);
 
-  List<Todo> searched(String searchedTodo);
+  List<Todo> search(String searchByWhat, String searchedTodo);
 
   Todo findById(Long id);
 }

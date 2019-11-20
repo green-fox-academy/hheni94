@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/todo") //Így ha a localhost-ot megnyitom, akkor mindegyik endpoint elé ez a /todo kerül.
 public class TodoController {
@@ -30,11 +32,11 @@ public class TodoController {
     return "todolist";
   }
 
-  @PostMapping(value = "/list")
-  public String search(Model model, @RequestParam String searched) {
-    model.addAttribute("todos", service.searched(searched));
-    return "todolist";
-  }
+//  @PostMapping(value = "/list")
+//  public String search(Model model, @RequestParam String searched) {
+//    model.addAttribute("todos", service.searched(searched));
+//    return "todolist";
+//  }
 
   @GetMapping(value = "/add")
   public String add(@ModelAttribute(name = "todo")Todo todo) {
@@ -49,7 +51,8 @@ public class TodoController {
 
   @GetMapping(value = "/{id}/delete")
   public String delete(@PathVariable(name = "id") Long id) {
-    service.delete(service.findById(id));
+    //service.delete(service.findById(id));
+    service.delete(id);
     return "redirect:/todo/list";
   }
 
@@ -70,5 +73,12 @@ public class TodoController {
 //    edited.setAssignee(assigneeService.findById(newId));
 //    service.save(edited);
     return "redirect:/todo/list";
+  }
+
+  @PostMapping(value = "/list")
+  public String search(Model model, @RequestParam (name = "searchByWhat") String searchByWhat, @RequestParam (name = "searchedTodo") String searchedTodo) {
+    List<Todo> searched = service.search(searchByWhat, searchedTodo);
+    model.addAttribute("todos", searched);
+    return "todolist";
   }
 }

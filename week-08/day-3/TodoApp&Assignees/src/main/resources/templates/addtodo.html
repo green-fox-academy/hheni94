@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo App & Assignees</title>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+
 <h1>Add new todo</h1>
 
 <form th:action="@{/todo/add}" th:method="POST" th:object="${todo}">
     <input type="text" id="title" th:field="*{title}" placeholder="Please type in a new todo"><br>
-    <button type="submit">Submit</button>
+    <button type="submit" class="btn btn-secondary">Add</button><br>
+    <a href="/todo/list">Cancel</a>
 </form>
-
 </body>
 </html>

@@ -1,6 +1,9 @@
 package com.hheni94.todoappandassignees.models;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 public class Todo {
@@ -24,6 +27,9 @@ public class Todo {
   @Transient //Ez nem fog belekerülni az adatbázisba, amit ezzel megjelölök.
   private Long assigneeId;
 
+  private String creationDate = formatDate();
+  private String dueDate;
+
   public Todo(long id, String title, boolean urgent, boolean done, Assignee assignee) {
     this.id = id;
     this.title = title;
@@ -42,7 +48,7 @@ public class Todo {
   }
 
   public Assignee getAssignee() {
-      return assignee;
+    return assignee;
   }
 
   public void setAssignee(Assignee assignee) {
@@ -105,7 +111,30 @@ public class Todo {
     return assigneeId;
   }
 
-  public void setAssigneeId (Long assigneeId){
-      this.assigneeId = assigneeId;
-    }
+  public void setAssigneeId(Long assigneeId) {
+    this.assigneeId = assigneeId;
   }
+
+  private String formatDate() {
+    String stringDateFormat = "yyyy-MM-dd/hh:mm";
+    DateFormat dateFormat = new SimpleDateFormat(stringDateFormat);
+    String formattedDate = dateFormat.format(new Date());
+    return formattedDate;
+  }
+
+  public String getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(String creationDate) {
+    this.creationDate = creationDate;
+  }
+
+  public String getDueDate() {
+    return dueDate;
+  }
+
+  public void setDueDate(String dueDate) {
+    this.dueDate = dueDate;
+  }
+}

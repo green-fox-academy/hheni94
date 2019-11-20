@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit todo</title>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+
 <h1>Edit Todo</h1>
 
 <form th:action="@{'/todo/' + ${editedTodo.getId()} + '/edit'}" th:method="POST" th:object="${editedTodo}">
@@ -14,11 +18,13 @@
     <input type="checkbox" id="done" th:field="*{done}"><br>
     <label for="urgent">Urgent</label>
     <input type="checkbox" id="urgent" th:field="*{urgent}"><br>
+    <label for="due">Due date</label>
+    <input type="date" id="due" th:field="*{dueDate}"><br>
     <label for="assignee">Select assignee</label>
     <select id="assignee" th:field="*{assigneeId}">
         <option th:each="assignee : ${assignees}" th:value="${assignee.getId()}" th:text="${assignee.getName()}"></option>
-    </select>
-    <button type="submit">Edit</button>
+    </select><br>
+    <button type="submit" class="btn btn-secondary">Edit</button><br>
     <a href="/todo/list">Cancel</a>
 </form>
 

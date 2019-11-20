@@ -31,8 +31,8 @@ public class TodoServiceImp implements ITodoService {
   }
 
   @Override
-  public void delete(Todo todo) {
-    todoRepository.delete(todo);
+  public void delete(Long id) {
+    todoRepository.deleteById(id);
   }
 
   /*public List<Todo> findAllByDone(Boolean done) {
@@ -55,8 +55,19 @@ public class TodoServiceImp implements ITodoService {
   }
 
   @Override
-  public List<Todo> searched(String searchedTodo) {
-    return todoRepository.findTodoByActionNamePart("%" + searchedTodo + "%");
+  public List<Todo> search(String searchedTodo, String searchByWhat) {
+    //return todoRepository.findTodoByActionNamePart("%" + searchedTodo + "%");
+    if (searchByWhat.equals("action")) {
+      return todoRepository.findAllByTitleContainsIgnoreCase(searchedTodo);
+    } else if (searchByWhat.equals("creationDate")) {
+      return todoRepository.findAllByCreationDateContainsIgnoreCase(searchedTodo);
+    } else if (searchByWhat.equals("dueDate")) {
+      return todoRepository.findAllByDueDateContainsIgnoreCase(searchedTodo);
+    } else if (searchByWhat.equals("assigneeName")) {
+      //return todoRepository.findAllByAssigneeNameContainsIgnoreCase(searchedTodo);
+      return todoRepository.findTodoByAssigneeNamePart(searchedTodo);
+    }
+    return null;
   }
 
   @Override
